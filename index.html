@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site no GitHub Pages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            color: #fdbb2d;
+        }
+        
+        .message {
+            font-size: 1.8rem;
+            margin: 25px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 5px solid #1a2a6c;
+        }
+        
+        .github-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: #24292e;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid #fdbb2d;
+        }
+        
+        .github-link:hover {
+            background: #fdbb2d;
+            color: #24292e;
+            transform: translateY(-3px);
+        }
+        
+        .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .steps {
+            margin-top: 30px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .steps h3 {
+            color: #fdbb2d;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .steps ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+        
+        .steps li {
+            margin: 10px 0;
+            padding-left: 5px;
+        }
+        
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .message {
+                font-size: 1.4rem;
+            }
+            
+            .container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="emoji">🚀</span>
+        <h1>Meu Primeiro GitHub Pages</h1>
+        
+        <div class="message">
+            🎉 <strong>Parabéns!</strong> Seu site está no ar!
+        </div>
+        
+        <p>Este é o início da sua jornada com desenvolvimento web e controle de versão usando Git e GitHub.</p>
+        
+        <div class="steps">
+            <h3>📌 Próximos passos sugeridos:</h3>
+            <ul>
+                <li>Personalize este HTML com seu próprio conteúdo</li>
+                <li>Adicione mais páginas (sobre.html, portfolio.html)</li>
+                <li>Aprenda CSS para estilizar ainda mais</li>
+                <li>Adicione interatividade com JavaScript</li>
+                <li>Consulte a documentação do GitHub Pages</li>
+            </ul>
+        </div>
+        
+        <a href="https://pages.github.com" target="_blank" class="github-link">
+            📚 Ver Documentação do GitHub Pages
+        </a>
+        
+        <footer>
+            <p>Publicado com ❤️ usando GitHub Pages | Atualizado em <span id="current-date"></span></p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona a data atual automaticamente
+        const now = new Date();
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('pt-BR', options);
+        
+        // Efeito simples de digitação na mensagem principal
+        const messageElement = document.querySelector('.message');
+        const originalText = messageElement.innerHTML;
+        messageElement.innerHTML = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                messageElement.innerHTML += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        // Inicia o efeito após 1 segundo
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
