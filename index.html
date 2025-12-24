@@ -1,176 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site no GitHub Pages</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .container {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-            width: 100%;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-            color: #fdbb2d;
-        }
-        
-        .message {
-            font-size: 1.8rem;
-            margin: 25px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            border-left: 5px solid #1a2a6c;
-        }
-        
-        .github-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 30px;
-            background: #24292e;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: 2px solid #fdbb2d;
-        }
-        
-        .github-link:hover {
-            background: #fdbb2d;
-            color: #24292e;
-            transform: translateY(-3px);
-        }
-        
-        .emoji {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .steps {
-            margin-top: 30px;
-            text-align: left;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        
-        .steps h3 {
-            color: #fdbb2d;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        .steps ul {
-            list-style-position: inside;
-            padding-left: 10px;
-        }
-        
-        .steps li {
-            margin: 10px 0;
-            padding-left: 5px;
-        }
-        
-        footer {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .message {
-                font-size: 1.4rem;
-            }
-            
-            .container {
-                padding: 25px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Clima - Supabase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      max-width: 420px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .item {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .data {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <span class="emoji">🚀</span>
-        <h1>Meu Primeiro GitHub Pages</h1>
-        
-        <div class="message">
-            🎉 <strong>Parabéns!</strong> Seu site está no ar!
-        </div>
-        
-        <p>Este é o início da sua jornada com desenvolvimento web e controle de versão usando Git e GitHub.</p>
-        
-        <div class="steps">
-            <h3>📌 Próximos passos sugeridos:</h3>
-            <ul>
-                <li>Personalize este HTML com seu próprio conteúdo</li>
-                <li>Adicione mais páginas (sobre.html, portfolio.html)</li>
-                <li>Aprenda CSS para estilizar ainda mais</li>
-                <li>Adicione interatividade com JavaScript</li>
-                <li>Consulte a documentação do GitHub Pages</li>
-            </ul>
-        </div>
-        
-        <a href="https://pages.github.com" target="_blank" class="github-link">
-            📚 Ver Documentação do GitHub Pages
-        </a>
-        
-        <footer>
-            <p>Publicado com ❤️ usando GitHub Pages | Atualizado em <span id="current-date"></span></p>
-        </footer>
-    </div>
 
-    <script>
-        // Adiciona a data atual automaticamente
-        const now = new Date();
-        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-        document.getElementById('current-date').textContent = now.toLocaleDateString('pt-BR', options);
-        
-        // Efeito simples de digitação na mensagem principal
-        const messageElement = document.querySelector('.message');
-        const originalText = messageElement.innerHTML;
-        messageElement.innerHTML = '';
-        
-        let i = 0;
-        function typeWriter() {
-            if (i < originalText.length) {
-                messageElement.innerHTML += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
+  <div class="card">
+    <h1>Clima Atual</h1>
+    <div class="item">🌡 Temperatura: <span id="temp">--</span> °C</div>
+    <div class="item">💧 Umidade: <span id="umi">--</span> %</div>
+    <div class="item">🔽 Pressão: <span id="pres">--</span> hPa</div>
+    <div class="data" id="data">Carregando...</div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://jumfigqlnqplbpokqhvj.supabase.co";
+    const SUPABASE_ANON_KEY = "SUA_ANON_KEY_AQUI";
+
+    async function carregarClima() {
+      const url =
+        `${SUPABASE_URL}/rest/v1/clima` +
+        `?select=temperatura,umidade,pressao,created_at` +
+        `&order=created_at.desc&limit=1`;
+
+      const response = await fetch(url, {
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
         }
-        
-        // Inicia o efeito após 1 segundo
-        setTimeout(typeWriter, 1000);
-    </script>
+      });
+
+      const data = await response.json();
+
+      if (data.length > 0) {
+        const c = data[0];
+
+        document.getElementById("temp").textContent =
+          c.temperatura?.toFixed(1) ?? "--";
+        document.getElementById("umi").textContent =
+          c.umidade?.toFixed(1) ?? "--";
+        document.getElementById("pres").textContent =
+          c.pressao?.toFixed(1) ?? "--";
+
+        const dt = new Date(c.created_at);
+        document.getElementById("data").textContent =
+          "Atualizado em: " + dt.toLocaleString("pt-BR");
+      } else {
+        document.getElementById("data").textContent =
+          "Nenhum dado encontrado.";
+      }
+    }
+
+    carregarClima();
+    // Atualiza a cada 60 segundos
+    setInterval(carregarClima, 60000);
+  </script>
+
 </body>
 </html>
